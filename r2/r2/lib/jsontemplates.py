@@ -285,6 +285,7 @@ class AccountJsonTemplate(IdentityJsonTemplate):
         data = ThingJsonTemplate.raw_data(self, thing)
         if c.user_is_loggedin and thing._id == c.user._id:
             data["modhash"] = c.modhash
+            data["needs_captcha"] = c.user.needs_captcha()
         return data
 
 class LinkJsonTemplate(ThingJsonTemplate):
